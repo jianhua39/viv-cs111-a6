@@ -92,7 +92,7 @@ public class WeatherGenerator {
     public static void populateLocationProbabilities( double[] drywetProbability, double[] wetwetProbability, 
                                      double longitude, double latitude, 
                                      double[][] drywet, double[][] wetwet){
-                                        
+
         // COMPLETE THIS METHOD
         for (int i=0; i<drywet.length; i++){
             if (drywet[i][0]==longitude && drywet[i][1]==latitude){
@@ -188,8 +188,7 @@ public class WeatherGenerator {
      */
     public static int[] oneMonthForecast(int numberOfLocations, int month, double longitude, double latitude ){
         
-        // COMPLETE THIS METHOD
-        int[] result = new int[numberOfDaysInMonth[month]];
+        // COMPLETE THIS METHOD        
         double[][] drywet = new double[numberOfLocations][14];
         double[][] wetwet = new double[numberOfLocations][14];
         double[] drywetProbability = new double[12];
@@ -269,6 +268,10 @@ public class WeatherGenerator {
                 cnt = 0;
             }
         }
+
+        if (cnt > longest) {
+            longest = cnt;
+        }
         return longest;
     }
 
@@ -297,7 +300,7 @@ public class WeatherGenerator {
         int leastWetDays = forecast.length;
         int wetDays = 0;
         for(int i=0; i<forecast.length;i++){
-            if ((i+7) >= forecast.length)
+            if ((i+7) > forecast.length)
                 break;
 
             for (int j=0; j<7; j++){
